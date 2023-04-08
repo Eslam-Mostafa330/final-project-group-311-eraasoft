@@ -46,7 +46,7 @@
         display: flex;
     }
     .number-of-copies-input {
-        width: 45px !important;
+        width: 55px !important;
         text-align: center;
         height: 25px !important;
         padding-right: 15px !important;

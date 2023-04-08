@@ -23,7 +23,7 @@ class BooksController extends Controller
      */
     public function index()
     {
-        $books = Book::orderBy('created_at', 'desc')->get();
+        $books = Book::all();
         return view('admin.books.index', compact('books'));
     }
 
@@ -49,7 +49,7 @@ class BooksController extends Controller
             'isbn' => ['required', 'alpha_num', Rule::unique('books', 'isbn')],
             'cover_image' => 'image|required',
             'category' => 'required',
-            'authors' => 'required',
+            'authors' => 'nullable',
             'publisher' => 'required',
             'description' => 'nullable',
             'publish_year' => 'numeric|nullable',
@@ -106,9 +106,9 @@ class BooksController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'cover_image' => 'image',
-            'category' => 'nullable',
+            'category' => 'required',
             'authors' => 'nullable',
-            'publisher' => 'nullable',
+            'publisher' => 'required',
             'description' => 'nullable',
             'publish_year' => 'numeric|nullable',
             'number_of_pages' => 'numeric|required',

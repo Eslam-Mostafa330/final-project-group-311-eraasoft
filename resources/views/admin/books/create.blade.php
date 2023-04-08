@@ -56,7 +56,7 @@ Dashboard <i class="fa-solid fa-angle-right"></i> Books <i class="fa-solid fa-an
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-md-4 col-form-label" for="authors">Authors<span class="star">*</span></label>
+                        <label class="col-md-4 col-form-label" for="authors">Authors<span class="star"></span></label>
                         <div class="col-md-6">
                             <select name="authors" id="authors" class="form-control" >
                                 <option disabled selected>Choose Author</option>

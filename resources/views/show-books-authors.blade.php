@@ -5,6 +5,9 @@
 .main-title {
     color: #4FA72C;
 }
+.card-main {
+    width: 292px !important;
+}
 
 .top-header {
     width: 100% !important;
@@ -71,6 +74,47 @@
         color: #fff !important;
     }
 
+    .buy-btn {
+        background: #4FA72C !important;
+        width: 40%;
+        transform: translateX(50%);
+        position: relative;
+        top: -15px;
+        margin-left: 30px;
+        color: #fff;
+    }
+    .buy-btn:hover {
+        background: #388E3C !important;
+        color: #fff !important;
+    }
+    .category-text {
+        color: #4FA72C !important;
+    }
+    .category-text:hover {
+        text-decoration: none !important;
+        color: #1DC88A !important;
+    }
+    .author-text {
+        position: relative;
+        bottom: -10px;
+    }
+    .book-title {
+        text-decoration: none !important;
+        color: #388E3C !important;
+    }
+    .free-shipping {
+        background-color: #4FA72C;
+        color: #fff;
+        padding: 4px 14px;
+        position: absolute;
+        left: -30px;
+        top: -10px;
+        rotate: -30deg;
+        letter-spacing: 2px;
+        border-radius: 4px;
+    }
+
+
 </style>
 @endsection
 
@@ -98,8 +142,9 @@
                 @foreach ($books as $book)
                 {{-- A Condition to check if the store is not out of books --}}
                     @if($book->number_of_copies > 0)
-                        <div class="col-lg-3 col-md-4 col-sm-6 mt-2">
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-5">
                             <div class="card mb-4 card-main">
+                                <p class="free-shipping">Free Shipping</p>
                                 <div>
                                     <div class="card-img-actions">
                                         {{-- A URL to the book details page when users click on the book cover --}}
@@ -112,10 +157,10 @@
                                     <div class="mb-2">
                                         <h6 class="font-weight-semibold mb-2 card-title">
                                             {{-- A URL to the book details page when users click on the book title --}}
-                                            <a href="{{url("book/details/$book->id")}}" class="text-default mb-0" data-abc="true">{{$book->title}}</a>
+                                            <a href="{{url("book/details/$book->id")}}" class="text-default mb-0 book-title" data-abc="true">{{$book->title}}</a>
                                         </h6>
                                         {{-- A Route that displays all books related to the chosen category --}}
-                                        <a href="{{route('show-books-category', $book->category)}}" class="text-muted" data-abc="true">
+                                        <a href="{{route('show-books-category', $book->category)}}" class="text-muted category-text" data-abc="true">
                                             {{$book->category->name}}
                                         </a>
                                     </div>
@@ -141,6 +186,8 @@
                                         </span>
                                     </div>
                                 </div>
+                                    {{-- A URL to the book details page when users click on buy now --}}
+                                    <a href="{{url("book/details/$book->id")}}" class="buy-btn btn">Buy Now <i class="fa-solid fa-cart-arrow-down"></i></a>
                             </div>
                         </div>
                     @else
